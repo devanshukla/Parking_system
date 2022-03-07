@@ -2,7 +2,6 @@ class Car:
     def __init__(self, licensePlate):
         self.licensePlate = licensePlate
 
-#-----------------------------------------------------
 
 class ParkingSlot:
     def __init__(self, row, spotNumber, level, car):
@@ -20,7 +19,6 @@ class ParkingSlot:
     def removeVehicle(self):
         self.car = None
 
-#------------------------------------------------------
 
 class Level:
     def __init__(self,rows,levelNumber):
@@ -34,12 +32,12 @@ class Level:
         if(self.availableSpots<=0):
             return None
         else:
-            if(len(self.parkingSlots)==0): # The level is empty, all spots are free
+            if(len(self.parkingSlots)==0): 
                 return ParkingSlot(0,0,0, None)
             else:
                 lastCarParked = self.parkingSlots[-1]
 
-            if(lastCarParked.spotNumber<self.spotsPerRow): # Check if there is free space in the row
+            if(lastCarParked.spotNumber<self.spotsPerRow): 
                 return ParkingSlot(lastCarParked.row,lastCarParked.spotNumber,self.levelNumber,None)
             if(lastCarParked.row<self.rows):
                 return ParkingSlot(lastCarParked.row+1,0,self.levelNumber,None)
@@ -54,7 +52,7 @@ class Level:
             self.availableSpots-=1
             return True
 
-#----------------------
+
 class ParkingLot:
     def __init__(self, levels):
         self.levels = levels
